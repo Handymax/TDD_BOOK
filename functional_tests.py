@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import unittest
 import time
 
+
 class NewVistorTest(unittest.TestCase):
     def setUp(self):
         options = webdriver.ChromeOptions()
