@@ -1,4 +1,4 @@
-from django.test import LiveServerTestCase as tcs
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase as tcs
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
