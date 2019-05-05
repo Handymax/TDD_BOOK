@@ -29,13 +29,14 @@ class FunctionalTest(tcs):
         rows = table.find_elements_by_tag_name('tr')
         self.assertIn(row_text, [row.text for row in rows])
 
-    def wait_for_browser(self, browser_func, *args, **kwargs):
+    def wait_for(self, func):
         time_start = time.time()
         while True:
             try:
-                return browser_func(*args, **kwargs)
+                return func()
 
-            except(NoSuchElementException, WebDriverException) as e:
+            except(AssertionError, NoSuchElementException,
+                    WebDriverException) as e:
                 if time.time() - time_start > MAX_WAIT:
                     raise e
                 time.sleep(0.5)

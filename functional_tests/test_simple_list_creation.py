@@ -30,14 +30,17 @@ class NewVistorTest(FunctionalTest):
         # There is still a text box inviting her to add another item. She
         # enters "Use peacock feathers to make a fly"
         # (Edith is very methodical)
-        inputbox = self.wait_for_browser(
-                self.browser.find_element_by_id, 'id_new_item')
+        inputbox = self.wait_for(lambda: self.browser.find_element_by_id(
+            'id_new_item'
+            ))
         inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
 
         # The page updates again, and now shows both items on her list
-        self.wait_for_browser(
-                self.check_for_row_in_list_table, '1: Buy peacock feathers')
+        self.wait_for(
+                lambda: self.check_for_row_in_list_table(
+                    '1: Buy peacock feathers'
+                ))
         self.check_for_row_in_list_table(
                 '2: Use peacock feathers to make a fly')
 
@@ -49,8 +52,10 @@ class NewVistorTest(FunctionalTest):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
-        self.wait_for_browser(
-                self.check_for_row_in_list_table, '1: Buy peacock feathers')
+        self.wait_for(
+                lambda: self.check_for_row_in_list_table(
+                    '1: Buy peacock feathers'
+                ))
 
         # She notices that her list has a unique URL
         edith_list_url = self.browser.current_url
@@ -79,7 +84,9 @@ class NewVistorTest(FunctionalTest):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
-        self.wait_for_browser(self.check_for_row_in_list_table, '1: Buy milk')
+        self.wait_for(
+                lambda: self.check_for_row_in_list_table('1: Buy milk')
+                )
 
         # Francis gets his own unique URL
         francis_list_url = self.browser.current_url
