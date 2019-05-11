@@ -10,7 +10,7 @@
 
 ## Chapter 12
 
-- `wait_for_row_in_list_table` is in the book, but I'm using my `waiting_for_browser` instead of that.
+- `wait_for_row_in_list_table` is in the book, but I'm using my `waiting_for`+`check_for_row_in_list_table` instead of that.
 
 ```python
 # In the book
@@ -27,18 +27,5 @@ def wait_for_row_in_list_table(self, row_text):
 			raise e
 			time.sleep(0.5)
 
-# In my project
-def waiting_for_browser(browser_func, *args, **kwargs):
-    time_start = time.time()
-    while True:
-        try:
-            return browser_func(*args, **kwargs)
-
-        except(NoSuchElementException, WebDriverException) as e:
-            if time.time() - time_start > MAX_WAIT:
-                raise e
-            else:
-                time.sleep(0.5)
-
-
 ```
+
