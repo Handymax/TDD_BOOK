@@ -27,7 +27,7 @@ class ItemValidationTest(FunctionalTest):
         # and she can submit it successfully
         self.get_item_input_box().send_keys(Keys.ENTER)
         self.wait_for(
-                lambda: self.check_for_row_in_list_table('1: buy milk')
+                lambda: self.wait_for_row_in_list_table('1: buy milk')
                 )
 
         # perversely, she now decides to submit a second blank list item
@@ -35,7 +35,7 @@ class ItemValidationTest(FunctionalTest):
 
         # again, the browser will not comply
         self.wait_for(
-                lambda: self.check_for_row_in_list_table('1: buy milk')
+                lambda: self.wait_for_row_in_list_table('1: buy milk')
                 )
         self.wait_for(lambda: self.browser.find_elements_by_css_selector(
                 '#id_text:invalid'
@@ -48,10 +48,10 @@ class ItemValidationTest(FunctionalTest):
         ))
         self.get_item_input_box().send_keys(Keys.ENTER)
         self.wait_for(
-                lambda: self.check_for_row_in_list_table('1: buy milk')
+                lambda: self.wait_for_row_in_list_table('1: buy milk')
         )
         self.wait_for(
-                lambda: self.check_for_row_in_list_table('2: make tea')
+                lambda: self.wait_for_row_in_list_table('2: make tea')
         )
 
     def test_cannot_add_duplicate_items(self):
@@ -60,7 +60,7 @@ class ItemValidationTest(FunctionalTest):
         self.get_item_input_box().send_keys('buy wellies')
         self.get_item_input_box().send_keys(Keys.ENTER)
         self.wait_for(
-                lambda: self.check_for_row_in_list_table('1: buy wellies')
+                lambda: self.wait_for_row_in_list_table('1: buy wellies')
         )
 
         # she accidentally tries to ENTER a duplicate item
@@ -79,7 +79,7 @@ class ItemValidationTest(FunctionalTest):
         self.get_item_input_box().send_keys('Banter too thick')
         self.get_item_input_box().send_keys(Keys.ENTER)
         self.wait_for(
-                lambda: self.check_for_row_in_list_table('1: Banter too thick')
+                lambda: self.wait_for_row_in_list_table('1: Banter too thick')
         )
         self.get_item_input_box().send_keys('Banter too thick')
         self.get_item_input_box().send_keys(Keys.ENTER)

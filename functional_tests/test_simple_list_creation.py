@@ -38,10 +38,10 @@ class NewVistorTest(FunctionalTest):
 
         # The page updates again, and now shows both items on her list
         self.wait_for(
-                lambda: self.check_for_row_in_list_table(
+                lambda: self.wait_for_row_in_list_table(
                     '1: Buy peacock feathers'
                 ))
-        self.check_for_row_in_list_table(
+        self.wait_for_row_in_list_table(
                 '2: Use peacock feathers to make a fly')
 
         # Satisfied, she goes back to sleep
@@ -53,7 +53,7 @@ class NewVistorTest(FunctionalTest):
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for(
-                lambda: self.check_for_row_in_list_table(
+                lambda: self.wait_for_row_in_list_table(
                     '1: Buy peacock feathers'
                 ))
 
@@ -85,7 +85,7 @@ class NewVistorTest(FunctionalTest):
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for(
-                lambda: self.check_for_row_in_list_table('1: Buy milk')
+                lambda: self.wait_for_row_in_list_table('1: Buy milk')
                 )
 
         # Francis gets his own unique URL
