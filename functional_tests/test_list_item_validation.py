@@ -2,14 +2,14 @@ from .base import FunctionalTest
 from selenium.webdriver.common.keys import Keys
 
 
-class ItemValidationTest(FunctionalTest):
+class ListPageItemValidationTest(FunctionalTest):
     def get_error_element(self):
         return self.browser.find_element_by_css_selector('.has-error')
 
     def test_cannot_add_empty_list_items(self):
         # edith goes to the home page and accidentally tries to submit
         # an empty list item. she hits ENTER on the empty input box
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.live_server_url + '/lists/')
         self.get_item_input_box().send_keys(Keys.ENTER)
 
         # the browser intercepts the request, and does not load the
@@ -56,7 +56,7 @@ class ItemValidationTest(FunctionalTest):
 
     def test_cannot_add_duplicate_items(self):
         # edith goes to the home page and starts a new list
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.live_server_url + '/lists/')
         self.get_item_input_box().send_keys('buy wellies')
         self.get_item_input_box().send_keys(Keys.ENTER)
         self.wait_for(
@@ -75,7 +75,7 @@ class ItemValidationTest(FunctionalTest):
 
     def test_error_messages_are_cleared_on_input(self):
         # Edith starts a list and causes a validation error:
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.live_server_url + '/lists/')
         self.get_item_input_box().send_keys('Banter too thick')
         self.get_item_input_box().send_keys(Keys.ENTER)
         self.wait_for(

@@ -1,8 +1,9 @@
 from .base import FunctionalTest
+import time
 TEST_PAGE = '../docs/md_pages/my_blog_design.md'
 
 
-class NewPageTest(FunctionalTest):
+class NewListPageTest(FunctionalTest):
 
     def test_open_index_page(self):
         # open home page, title with qicai21
@@ -23,10 +24,11 @@ class NewPageTest(FunctionalTest):
         self.assertEqual(header, 'Welcome to view this website!')
 
         # click super-list button, the page trans to super-list page
-        self.browser.find_element_by_xpath('//a[text()="SUPER-LIST"]').click()
+        self.browser.find_element_by_id('ref_to_lists').click()
+        self.assertEqual(self.browser.title, 'To-Do lists')
 
         # click blog button, the page trans to blog index page,
-        self.browser.find_element_by_xpath('//a[text()="BLOG"]').click()
+        self.browser.find_element_by_id('ref_to_blogs').click()
 
         # a side label of toc on the left
         toc_lab = self.browser.find_element_by_id('toc')

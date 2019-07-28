@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content="Asciidoctor 1.5.7.1">
+	<title>qicai21</title>
+	<link href="/static/bootstrap/css/asciidoctor.css" rel="stylesheet">
+	<link rel="stylesheet" href="/static/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/bootstrap/css/coderay-asciidoctor.css">
+	<script type="text/javascript" src="/static/jquery/jquery.js"></script>
+	<script async="" src="/static/bootstrap/js/analytics.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="article toc2 toc-left" id="dummybodyid">
+	<div id="back_index" style="position: absolute; top: 0; right: 0; z-index:100">
+		<a href="/">
+			<img src="/static/images/backtoindex.svg" alt="back to index">
+		</a>
+	</div>
+	<div id="header">
+		<div id="toc" class="toc2">
+			<div id="toctittle">blog list</div>
+			<ul class="sectlevel1">
+				<li><a href="page?name=simple_text">simple text</a></li>
+				<li><a href="page?name=my_blog_design">my blog design</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<div class="sect1">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</div>
+</body>
+</html>

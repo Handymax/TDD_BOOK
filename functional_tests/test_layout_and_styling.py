@@ -2,10 +2,10 @@ from .base import FunctionalTest
 from selenium.webdriver.common.keys import Keys
 
 
-class LayoutAndStylingTest(FunctionalTest):
+class ListPageLayoutAndStylingTest(FunctionalTest):
     def test_layout_and_styling(self):
-        # Edith goes to the home page
-        self.browser.get(self.live_server_url)
+        # Edith goes to the list home page
+        self.browser.get(self.live_server_url + '/lists/')
         self.browser.set_window_size(1024, 768)
 
         # She notices the input box is nicely centered

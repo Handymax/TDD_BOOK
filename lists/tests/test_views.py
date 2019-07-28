@@ -10,13 +10,17 @@ from lists.forms import (
 class HomePageTest(TestCase):
 
     def test_use_home_template(self):
-        response = self.client.get('/')
-        self.assertTemplateUsed(response, 'home.html')
+        response = self.client.get('/lists/')
+        self.assertTemplateUsed(response, 'list_home.html')
 
     def test_home_page_uses_item_form(self):
-        response = self.client.get('/')
+        response = self.client.get('/lists/')
         self.assertIsInstance(response.context['form'], ItemForm)
 
+    def test_home_page_include_top_bar(self):
+        response = self.client.get('/lists/')
+        # html = response.content.decode('utf-8')
+        self.assertContains(response, 'BLOG')
 
 class ListViewTest(TestCase):
 
@@ -141,7 +145,7 @@ class NewListTest(TestCase):
     def test_for_invalid_input_renders_home_template(self):
         response = self.client.post('/lists/new', data={'text': ''})
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home.html')
+        self.assertTemplateUsed(response, 'list_home.html')
 
     def test_validation_errors_are_shown_on_home_page(self):
         response = self.client.post('/lists/new', data={'text': ''})

@@ -1,0 +1,27 @@
+{% extends 'blog_base.html' %}
+{% block content %}
+	<div class="sectionbody" id="md_content">
+	</div>
+	<script style="text/javascript">
+var xml_request;
+if (window.XMLHttpRequest)
+{
+	xml_request = new XMLHttpRequest();
+}
+else
+{
+	xml_request = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+xml_request.onreadystatechange=function()
+{
+	if (xml_request.readyState==4 && xml_request.status==200)
+	{
+		document.getElementById("md_content").innerHTML=marked(xml_request.responseText);
+	}
+}
+
+xml_request.open("GET", "/static/docs/{{ md_name }}", true);
+xml_request.send();
+	</script>
+{% endblock %}

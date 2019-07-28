@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 # from django.contrib import admin
+from site_index import views as index_views
 from lists import views as list_views
 from lists import urls as list_urls
 from accounts import urls as accounts_urls
+from blogs import urls as blogs_urls
 
 urlpatterns = [
-    url(r'^$', list_views.home_page, name='home'),
+    url(r'^$', index_views.home_page, name='home'),
     url(r'^lists/', include(list_urls)),
+    url(r'^blogs/', include(blogs_urls)),
     url(r'accounts/', include(accounts_urls)),
 ]

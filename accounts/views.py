@@ -23,7 +23,7 @@ def send_login_email(request):
         request,
         "Check your email, we've sent you a link you can use to log in."
     )
-    return redirect('/')
+    return redirect('/lists/')
 
 
 def login(request):
@@ -31,4 +31,4 @@ def login(request):
     user = auth.authenticate(uid=uid)
     if user:
         auth.login(request, user)
-    return redirect('/')
+    return redirect('/lists/')
