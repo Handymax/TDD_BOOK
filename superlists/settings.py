@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from mongoengine import connect
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,11 +83,9 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.dummy',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -150,3 +149,14 @@ EMAIL_HOST_USER = 'qicai21@hotmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+test_conf = {
+    'local': False,  # doing test
+    'fork': False,  # perform fork
+    'clone': False,  # perform clone
+    'push': False,  # push the changes to GitHub
+    'pull': False,  # to create a pull request from the forked on
+ }
+
+the_db = connect("web_project")
+TEST_RUNNER = 'superlists.model_base.NoSQLTestRunner'
