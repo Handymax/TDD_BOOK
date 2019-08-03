@@ -15,7 +15,7 @@ class LoginTest(FunctionalTest):
         # Edith goes to the awesome superlists site
         # and notices a "Log in" section in the navbar for the first time
         # It's telling her to enter her email address, so she does
-        self.browser.get(self.live_server_url + '/lists/')
+        self.browser.get(self.live_server_url)
         self.browser.find_element_by_name('email').send_keys(TEST_EMAIL)
         self.browser.find_element_by_name('email').send_keys(Keys.ENTER)
 

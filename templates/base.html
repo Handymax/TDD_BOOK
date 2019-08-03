@@ -40,12 +40,39 @@
 		</div>
 		<ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
 			<li class="nav-item">
-				<a class="nav-link p-2" id="manage_btn" href="" target="_blank" rel="noopener" aria-label="Slack"><span class="fa fa-cog"></span></a>
-			</li>
-			<li class="nav-item">
 				<a class="nav-link p-2" href="" id="share_btn" target="_blank" rel="noopener" aria-label="Slack"><span class="fa fa-share-alt"></span></a>
 			</li>
+			<li class="nav-item">
+				{% if user.email %}
+				<ul class="nav navbar-nav navbar-right">
+					<li class="navbar-text">Loged in as {{ user.email }}</li>
+					<li><a href="{% url 'logout' %}">Log out</a></li>
+				</ul>
+				{% else %}
+					<form class="navbar-form navbar-right" action="{% url 'send_login_email' %}" method="POST">
+						<span>Enter email to log in :</span>
+						<input class="form-control" type="text" name="email"/>
+						{% csrf_token %}
+					</form>
+				{% endif %}
+			</li>
 		</ul>
+
+		{% if messages %}
+			<div class="row">
+				<div class="col-md-8">
+					{% for message in messages %}
+						{% if message.level_tag == 'success' %}
+							<div class="alert alert-success">{{ message }}</div>
+						{% else %}
+							<div class="alert alert-warning">{{ message }}</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+
+
 		<div class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3">Download</div>
 	</header>
 	<div class="container" style="max-width: 2280px;">

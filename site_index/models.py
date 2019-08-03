@@ -1,7 +1,6 @@
-from mongoengine import Document, StringField
-
+from djongo import models
 # Create your models here.
 
 
-class Person(Document):
-    name = StringField(max_length=200)
+class Person(models.Model):
+    name = models.CharField(max_length=200)

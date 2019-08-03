@@ -10,6 +10,7 @@ class ListPageLayoutAndStylingTest(FunctionalTest):
 
         # She notices the input box is nicely centered
         inputbox = self.get_item_input_box()
+        self.browser.get_screenshot_as_file('/home/guodb/desktop/selenium.png')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
             512,
