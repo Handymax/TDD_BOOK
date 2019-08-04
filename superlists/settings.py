@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'name': os.environ['DBNAME'],
+        'name': 'staging_qicai21_cn',
         'HOST': '127.0.0.1:27017',
     }
 }
