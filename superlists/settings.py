@@ -83,12 +83,12 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'web_project',
+        'NAME': 'staging_qicai21_cn',
         'HOST': '127.0.0.10',
         'PORT': 27010,
         'USER': 'qicai21',
         'PASSWORD': '5233',
-        'AUTH_SOURCE': 'web_project',
+        'AUTH_SOURCE': 'staging_qicai21_cn',
         'AUTH_MECHANISM': 'SCRAM-SHA-1'
     }
 }
