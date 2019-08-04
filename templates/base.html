@@ -24,34 +24,36 @@
 				<li class="nav-item" id="li0">
 					<a class="nav-item nav-link active" href="#">HOME<span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item" id="li1">
+				<li class="nav-item">
 					<a class="nav-item nav-link" href="#">LABORATORY</a>
 				</li>
-				<li class="nav-item" id="li2">
+				<li class="nav-item">
 					<a class="nav-item nav-link disabled" href="#">MEDIA</a>
 				</li>
-				<li class="nav-item" id='li3'>
+				<li class="nav-item">
 					<a class="nav-item nav-link" id="ref_to_blogs" href="/blogs/">BLOG</a>
 				</li>
-				<li class="nav-item" id='li4'>
+				<li class="nav-item">
 					<a class="nav-item nav-link" id="ref_to_lists" href="/lists/">TODO-LIST</a>
 				</li>
 			</ul>
 		</div>
-		<ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+		<ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" id="login-nav">
 			<li class="nav-item">
-				<a class="nav-link p-2" href="" id="share_btn" target="_blank" rel="noopener" aria-label="Slack"><span class="fa fa-share-alt"></span></a>
+				<a class="nav-link p-2" href="" id="github_btn" target="_blank" rel="noopener" aria-label="Slack"><i class="fa fa-github fa-2x"></i></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link p-2" href="" id="share_btn" target="_blank" rel="noopener" aria-label="Slack"><i class="fa fa-share-alt fa-2x"></i></a>
 			</li>
 			<li class="nav-item">
 				{% if user.email %}
-				<ul class="nav navbar-nav navbar-right">
-					<li class="navbar-text">Loged in as {{ user.email }}</li>
-					<li><a href="{% url 'logout' %}">Log out</a></li>
-				</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="navbar-text">Loged in as {{ user.email }}</li>
+						<li class="nav-item p-2"><a href="{% url 'logout' %}">Log out</a></li>
+					</ul>
 				{% else %}
 					<form class="navbar-form navbar-right" action="{% url 'send_login_email' %}" method="POST">
-						<span>Enter email to log in :</span>
-						<input class="form-control" type="text" name="email"/>
+						<input class="form-control" type="text" name="email" placeholder="enter email to login"/>
 						{% csrf_token %}
 					</form>
 				{% endif %}
@@ -71,17 +73,9 @@
 				</div>
 			</div>
 		{% endif %}
-
-
-		<div class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3">Download</div>
 	</header>
-	<div class="container" style="max-width: 2280px;">
-		<div id="main_content" class="row">
-			<div class="col-lg-8 col-centered col-sm-12">
-				<h1>Welcome to view this website!</h1>
-			</div>
-		</div>
-		<div id="footer" class="row"></div>
-	</div>
+
+	{% block main_content %}{% endblock %}
+
 </body>
 </html>

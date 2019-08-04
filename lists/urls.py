@@ -1,8 +1,8 @@
-from django.conf.urls import url
+from django.urls import path, re_path
 from lists import views
 
 urlpatterns = [
-    url(r'^$', views.new_list, name='home_page'),
-    url(r'^new$', views.new_list, name='new_list'),
-    url(r'^(\d+)/$', views.view_list, name='view_list'),
+    path('', views.new_list, name='home_page'),
+    path('new', views.new_list, name='new_list'),
+    re_path(r'(\d+)/', views.view_list, name='view_list'),
 ]

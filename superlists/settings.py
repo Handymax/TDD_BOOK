@@ -29,7 +29,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'superlists.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [(os.path.join(BASE_DIR, 'templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,7 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'name': 'web_project',
-        'HOST': '127.0.0.1:27017',       
+        'HOST': '127.0.0.1:27017',
     }
 }
 
@@ -150,11 +150,3 @@ EMAIL_HOST_USER = 'qicai21@hotmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-test_conf = {
-    'local': False,  # doing test
-    'fork': False,  # perform fork
-    'clone': False,  # perform clone
-    'push': False,  # push the changes to GitHub
-    'pull': False,  # to create a pull request from the forked on
- }

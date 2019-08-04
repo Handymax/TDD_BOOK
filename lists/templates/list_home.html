@@ -1,5 +1,37 @@
 {% extends 'base.html' %}
+{% block main_content %}
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-6 col-md-offset-3 jumbotron">
+			<div class="text-center">
+				<h1>{% block header_text %}{% endblock %}</h1>
+				<form method="POST" action="{% block form_action %}{% endblock %}">
+					{{ form.text }}
+					{% csrf_token %}
+					{% if form.errors %}
+						<div class="form-group has-error">
+							<div class="help-block">{{ form.text.errors }}</div>
+						</div>
+					{% endif %}
+				</form>
+			</div>
+		</div>
+	</div>
 
-{% block header_text %}Start a new To-Do list{% endblock %}
+	<div class="row">
+		<div class="col-lg-12 col-md-6 col-md-offset-3 jumbotron">
+			{% block table %}
+			{% endblock %}
+		</div>
+	</div>
+	<!-- try it if jquery.js not work well -->
+	<script src="/static/jquery-3.4.1.min.js"></script>
+	<script src="/static/list.js"></script>
 
-{% block form_action %}{% url 'new_list' %}{% endblock %}
+	<script>
+$(document).ready(function () {
+	window.Superlists.initialize();
+});
+	</script>
+</div>
+{% endblock %}

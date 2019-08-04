@@ -1,6 +1,6 @@
 import uuid
 from django.contrib import auth
-from django.db import models
+from djongo import models
 
 auth.signals.user_logged_in.disconnect(auth.models.update_last_login)
 

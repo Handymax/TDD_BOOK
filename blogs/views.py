@@ -14,5 +14,3 @@ def get_blog_page(request):
 
     finally:
         return render(request, 'blog_home.html', {'md_name': name})
-
-

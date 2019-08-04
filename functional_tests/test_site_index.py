@@ -14,9 +14,9 @@ class NewListPageTest(FunctionalTest):
         top_bar = self.browser.find_element_by_id('top_bar')
         # Menu button in the center of bar, they are blog, media, laboratory
         buttons = top_bar.find_elements_by_tag_name('a')
-        self.assertEqual(len(buttons), 7)
+        self.assertGreaterEqual(len(buttons), 5)
         # two tools button in the right, managing and sharing
-        self.browser.find_element_by_id('manage_btn')
+        self.browser.find_element_by_id('github_btn')
         self.browser.find_element_by_id('share_btn')
 
         # and main page's is showing a "welcome to view this website!" header
@@ -25,7 +25,7 @@ class NewListPageTest(FunctionalTest):
 
         # click super-list button, the page trans to super-list page
         self.browser.find_element_by_id('ref_to_lists').click()
-        self.assertEqual(self.browser.title, 'To-Do lists')
+        self.assertEqual(self.browser.title, 'qicai21')
 
         # click blog button, the page trans to blog index page,
         self.browser.find_element_by_id('ref_to_blogs').click()
@@ -35,7 +35,7 @@ class NewListPageTest(FunctionalTest):
         # click the first link on left toc, main page trans to the relative
         toc_lab.find_elements_by_xpath('ul[@class="sectlevel1"]/li/a')[0].click()
         # page, and showing the same content-header with the left link
-        text_1 = self.browser.find_element_by_tag_name('h1').text
+        text_1 = self.wait_for(lambda: self.browser.find_element_by_tag_name('h1').text)
         self.assertEqual(text_1, 'A simple Text')
 
         # when you click another link on the left, main page trans too.
