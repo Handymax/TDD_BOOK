@@ -83,13 +83,14 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'staging_qicai21_cn',
+        'NAME': os.enviorn['SITENAME'],
+        'ENFORCE_SCHEMA': True,
         'HOST': '127.0.0.10',
         'PORT': 27010,
         'USER': 'qicai21',
-        'PASSWORD': '5233',
-        'AUTH_SOURCE': 'staging_qicai21_cn',
-        'AUTH_MECHANISM': 'SCRAM-SHA-1'
+        'PASSWORD': os.environ['DB_PWD'],
+        'AUTH_SOURCE': os.enviorn['SITENAME'],
+        'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
 
@@ -152,6 +153,6 @@ LOGGING = {
 
 EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_HOST_USER = 'qicai21@hotmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
