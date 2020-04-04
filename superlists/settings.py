@@ -83,14 +83,16 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': os.enviorn['SITENAME'],
         'ENFORCE_SCHEMA': True,
-        'HOST': '127.0.0.10',
-        'PORT': 27010,
-        'USER': 'qicai21',
-        'PASSWORD': os.environ['DB_PWD'],
-        'AUTH_SOURCE': os.enviorn['SITENAME'],
-        'AUTH_MECHANISM': 'SCRAM-SHA-1',
+        'NAME': os.environ['SITENAME'],
+        'CLIENT': {
+            'host': '127.0.0.1',
+            'port': 27010,
+            'username': 'qicai21',
+            'password': os.environ['DB_PWD'],
+            'authSource': os.environ['AUTHSOURCE'],
+            'authMechanism': 'SCRAM-SHA-1',
+        },
     }
 }
 
