@@ -6,7 +6,7 @@
 
 ## Chapter 09&10
 
-1. TDD-BOOK use superlists-staging.ottg.eu, but in my project, I use staging.qicai21.cn instead. And I'm using this sitename in everywhere such as nginx config and foldpath.
+1. TDD-BOOK use superlists-staging.ottg.eu, but in my project, I use staging.qicai21.ml instead. And I'm using this sitename in everywhere such as nginx config and foldpath.
 
 ## Chapter 12
 
