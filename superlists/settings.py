@@ -84,7 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': True,
-        'NAME': os.environ['SITENAME'],
+        'NAME': os.environ['AUTHSOURCE'],
         'CLIENT': {
             'host': '127.0.0.1',
             'port': 27010,
